@@ -82,7 +82,6 @@ function aToi(s) {
     let isNegative = newStr[0] === '-';
     let hasPositiveSign = newStr[0] === '+';
 
-    // Remove the sign if it exists
     if (isNegative || hasPositiveSign) {
         newStr = newStr.slice(1);
     }
@@ -90,29 +89,24 @@ function aToi(s) {
     let result = "";
     for (let i = 0; i < newStr.length; i++) {
         if (newStr[i] < '0' || newStr[i] > '9') {
-            break; // Stop when encountering a non-numeric character
+            break;
         }
         result += newStr[i];
     }
 
-    // If no valid digits were found, return 0
     if (result === "") return 0;
 
-    // Convert to a number and apply the sign
     let num = isNegative ? -Number(result) : Number(result);
 
-    // Define 32-bit integer range
     const INT_MIN = -2147483648;
     const INT_MAX = 2147483647;
 
-    // Clamp the number to the 32-bit signed integer range
     if (num < INT_MIN) return INT_MIN;
     if (num > INT_MAX) return INT_MAX;
     
     return num;
 }
 
-// Example usage:
 console.log(aToi("-91283472332"));  // Expected output: -2147483648
 console.log(aToi("91283472332"));   // Expected output: 2147483647
 console.log(aToi("42"));            // Output: 42
