@@ -1,0 +1,1 @@
+//give array find the sum of the the distinct elements 
